@@ -1,28 +1,112 @@
 @charset "UTF-8";
 
-body{
-		background:#ffffff; 
-		margin-bottom: 40px;
-		margin-top:40px;
-	}
+/** Header **/
+.header{
+    min-width: 1180px;
+    min-height: 168px;
+    border-bottom: 2px solid #3c3c3b;
+    position: relative;
+    background: #fff;
+}
+.header .logo {
+    width: 190px;
+    margin-left: -95px;
+    position: absolute;
+    left: 50%;
+    top: 14px;
+}
+a {
+    text-decoration: none;
+    color: #828282;
+}
+.header .gnb {
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid #d8d8d8;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.header .gnb > ul > li:before, .header .gnb > ul > li:first-child:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    position: absolute;
+    top: 15px;
+    background: #d4d4d3;
+}
+.header .header_util {
+    width: 480px;
+    margin-right: -545px;
+    line-height: 1;
+    font-size: 14px;
+    text-align: right;
+    vertical-align: top;
+    position: absolute;
+    right: 50%;
+    top: 58px;
+}
+.header .gnb > ul > li > a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 46px;
+    font-size: 16px;
+    color: #3c3c3b;
+    font-weight: bold;
+    position: relative;
+}
+.header .gnb > ul {
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 1390px;
+    height: 50px;
+    margin: 0 auto;
+}
+.header .gnb > ul > li {
+    display: table-cell;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+/** Header END**/
+
+
+/** Calendar **/
 .calendar table {
 	 border: 1px solid #f1f1f1;
-	 width: 80%;
-	 height: 80%;
+	 width: 100%;
+	 height: 100%;
 	 font-size: 16px;
 	 text-align: center;
 	 cursor: pointer;
 	 margin:auto;
 	 background-color: white;
 }
-.calendar .top .topDt{
-	font-size : 40px;
-	text-align : center;
-	border : 1px;
-	width : 30%;
-	margin : auto;
+.calendar .WeekNm {
+	height : 10px;
 }
-
+.calendar .top{
+	font-size : 25px;
+	border : 1px;
+	margin:auto;
+ 	text-align: center;
+}
 .calendar table th, td {
 	border: 1px solid #f1f1f1;
 }
+.calendar .dayList .dayArrBf {
+	color : gray;
+	vertical-align: top;
+}
+.calendar .dayList .dayArrAf {
+	color : gray;
+	vertical-align: top;
+}
+.calendar .dayList .dayArr {
+	background-color : #efeff3;
+	vertical-align: top;
+}
+/** Calendar END**/

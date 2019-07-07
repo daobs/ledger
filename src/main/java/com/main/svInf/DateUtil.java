@@ -25,7 +25,7 @@ public interface DateUtil {
 	  * @author 1001
 	  *
 	  */
-	 public String getCurrentDt(String format);
+	 public String getCurrentDt(String date, String format);
 	 
 	/**
 	 * 요일 반환

@@ -8,8 +8,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 
+import com.main.svInf.ComUtil;
 import com.main.svInf.DateUtil;
 
 /**
@@ -20,6 +23,9 @@ import com.main.svInf.DateUtil;
  */
 @Service
 public class DateUtilImpl implements DateUtil {
+	
+	@Inject
+	private ComUtil comUtil;
 
 	/**
 	 * 현재날짜
@@ -37,18 +43,26 @@ public class DateUtilImpl implements DateUtil {
 	}
 
 	/**
-	 * 현재날짜
+	 * 날짜 포맷
 	 * 
 	 * @deprecated yyyy, yyyyMM, yyyyMMdd
+	 * @param date
 	 * @param FORMAT
 	 * @author 1001
 	 *
 	 */
 	@Override
-	public String getCurrentDt(String format) {
+	public String getCurrentDt(String date, String format) {
 		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(format, Locale.KOREA);
-		Date currentTime = new Date();
-		String curDt = mSimpleDateFormat.format(currentTime);
+		String curDt = "";
+		
+		if( comUtil.isTrimEmp(date) ) {
+			Date currentTime = new Date();
+			curDt = mSimpleDateFormat.format( currentTime );
+		}
+		else {
+			curDt = mSimpleDateFormat.format( this.getToDate(date));
+		}
 
 		return curDt;
 	}
