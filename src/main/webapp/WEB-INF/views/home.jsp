@@ -3,53 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-  
-  <link rel="stylesheet" href="/resources/css/calendar.css" />
 <title>Calendar</title>
 </head>
 <body>
-	<div class="calendar">
-	<div id="header" class="header">
-	    <header>
-	        <h1 class="logo">Calendar</h1>
-	        <div class="header_util">
-	            <a href="/">HOME</a>
-	                <a href="javascript:memProdBuy();">로그인</a>
-	                <a href="https://www.juvis.co.kr/member/step01.do" target="_blank" class="btn_join_set" onclick="check_device();">회원가입</a>
-	                <a href="/page/cscenter/notice">공지사항</a>
-	                <a href="/page/cart">설정</a>
-	        </div>
-	        <!--// header_util -->
-	        <!-- gnb -->
-	        <nav>
-	            <div id="gnb" class="gnb">
-	                <ul>
-	                    <li><a href="/">일일</a></li>
-	                    <li><a href="/">달력</a></li>
-	                    <li><a href="/">주별</a></li>
-	                    <li><a href="/">월별</a></li>
-	                    <li><a href="/">카테고리별</a></li>
-	                    <li><a href="/">요약</a></li>
-	                </ul>
-	            </div>
-	        </nav>
-	        <!--// gnb -->
-	    </header>
-	</div>
+<div class="calendar">
 		<div class="top">
 			<span class="topBtnLft" id="topBtnLft"> [이전] </span>
 			<span class="topDt" id="topDt"></span>
 			<span class="topBtnRgt" id="topBtnRgt"> [이후] </span>
 		</div>
 		<table class="dayList" id="dayList">
-
+	
 		</table> 
-	</div>
-</body>
-</html>
+</div>
 <script type="text/javascript">
 	//전역변수
 	var clickCnt = 0;
@@ -58,18 +24,6 @@
 	$( document ).ready(function() {
 		getCalDayArr();
 	});
-
-	$('#topBtnLft').click(function(){
-		clickCnt = -1;
-		nwDt = $('#topDt').text().replace('년 ', '').replace('월', '');
-		getCalDayArr();
-	})
-	$('#topBtnRgt').click(function(){
-		clickCnt = 1;
-		nwDt = $('#topDt').text().replace('년 ', '').replace('월', '');
-		getCalDayArr();
-	})
-	
 	
 	function getCalDayArr() {
 		 $.ajax({
@@ -126,6 +80,9 @@
 		    			else{
 		    				$('#dayList').find('td').eq(idx).addClass('dayArr');
 		    			}
+		    			//ID 적용
+		    			var _dayArr_txt =  $('#dayList').find('td').eq(idx).text();
+		    			$('#dayList').find('td').eq(idx).attr('id', 'dayArr' + _dayArr_txt);
 		    		}
 		    		$('#topDt').text(data.curtDt);
 		    	},
@@ -133,7 +90,29 @@
 	                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	            }
 		    });
+		 
+		 eventCall();
+	}
+	
+	function eventCall() {
+		$('#topBtnLft').click(function(){
+			clickCnt = -1;
+			nwDt = $('#topDt').text().replace('년 ', '').replace('월', '');
+			getCalDayArr();
+		});
+		
+		$('#topBtnRgt').click(function(){
+			clickCnt = 1;
+			nwDt = $('#topDt').text().replace('년 ', '').replace('월', '');
+			getCalDayArr();
+		});
+		
+		$('#dayList').find('td').click(function() {
+			alert( $(this).text() );
+		});
 	}
 </script>
-
+		
+</body>
+</html>
 

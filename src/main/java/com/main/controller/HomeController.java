@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.main.dto.MemberVO;
 import com.main.svInf.MemberService;
@@ -38,6 +39,15 @@ public class HomeController {
 		memberList = service.selectMember();
 		model.addAttribute("memberList", memberList);
 		return "home";
+	}
+	
+	@RequestMapping(value = "/dayli", method = RequestMethod.GET)
+	public String dayil(Locale locale, Model model) throws Exception {
+		
+		List<MemberVO> memberList = null;
+		memberList = service.selectMember();
+		model.addAttribute("memberList", memberList);
+		return "dayli";
 	}
 	
 	
