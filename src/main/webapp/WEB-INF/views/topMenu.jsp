@@ -20,7 +20,7 @@
 	        <nav>
 	            <div class="gnb" id="gnb">
 	                <ul>
-	                    <li><a href="/dayli">일일</a></li>
+	                    <li><a href="/daily">일일</a></li>
 	                    <li><a href="/">달력</a></li>
 	                    <li><a href="/">주별</a></li>
 	                    <li><a href="/">월별</a></li>

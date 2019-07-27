@@ -7,11 +7,10 @@
 </head>
 <body>
 <div class="dayli">
-	<ul>
-	<li>수입</li>
-	<li>지출</li>
-	<li>합계</li>
-	</ul>
+	<span>${daliyArr.curtDt}</span>
+	<span>수입</span>
+	<span>지출</span>
+	<span>합계</span>
 </div>
 </body>
 </html>
